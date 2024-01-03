@@ -85,7 +85,7 @@ export default function App() {
       // draggable
       ref={graphRef}
       cameraMode="pan"
-      labelFontUrl="/fonts/Roboto/Roboto-Light.ttf"
+      labelFontUrl="https://daniil00d.github.io/build/fonts/Roboto/Roboto-Light.ttf"
       nodes={nodes}
       edges={edges}
       selections={selections}
