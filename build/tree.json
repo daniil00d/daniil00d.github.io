@@ -1,0 +1,73 @@
+{
+  "tree": [
+    {
+      "id": 1,
+      "name": "Даниил\nМихайлович\nШенягин",
+      "father": 4,
+      "mother": 5,
+      "fill": "red",
+      "level": 0,
+      "icon": "https://sun154-1.userapi.com/s/v1/if2/5ymVPZX68cPh8yU02Y3JEXCpt-BxfZ05ULRoxbEbcdrv0Dk3qwZXW3U4ZC8F0t8vip4SmJFFSEaafkqZATpQffsO.jpg?quality=95&crop=13,0,2547,2547&as=50x50,100x100,200x200,400x400&ava=1&u=nyAzgvSZXSwZnil-5l80HZ1mgpe983rDEpDOo3AGL6k&cs=400x400"
+    },
+    {
+      "id": 2,
+      "name": "Егор\nМихайлович\nШенягин",
+      "father": 4,
+      "mother": 5,
+      "level": 0
+    },
+    {
+      "id": 3,
+      "name": "Никита\nМихайлович\nШенягин",
+      "father": 4,
+      "mother": 5,
+      "level": 0
+    },
+    {
+      "id": 4,
+      "name": "Михаил\nГеоргиевич\nШенягин",
+      "father": 9,
+      "mother": 8,
+      "level": 1
+    },
+    {
+      "id": 5,
+      "name": "Людмила\nАлександровна\nШенягина (Васильева)",
+      "father": 6,
+      "mother": 7,
+      "level": 1
+    },
+    {
+      "id": 8,
+      "name": "Фаина\nФедоровна\nШенягина (Николаева)",
+      "level": 2
+    },
+    {
+      "id": 9,
+      "name": "Георгий\nМихайлович\nШенягин",
+      "level": 2
+    },
+    {
+      "id": 6,
+      "name": "Александр\nНиколаевич\nВасильев",
+      "level": 2
+    },
+    {
+      "id": 7,
+      "name": "Фаина\nВасильевна\nВасильева (Хлебнова)",
+      "father": 10,
+      "mother": 11,
+      "level": 2
+    },
+    {
+      "id": 10,
+      "name": "Василий\nСергеевич\nХлебнов (майор)",
+      "level": 3
+    },
+    {
+      "id": 11,
+      "name": "Клавдия\nВасильевна\nПетрова (Андреева)",
+      "level": 3
+    }
+  ]
+}
