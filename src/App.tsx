@@ -19,7 +19,7 @@ export default function App() {
   const [tree, setTree] = useState<null | Node[]>(null);
 
   useEffect(() => {
-    fetch("/tree.json")
+    fetch("https://daniil00d.github.io/build/tree.json")
       .then((res) => res.json())
       .then((response: Tree) => setTree(response.tree));
   }, []);
