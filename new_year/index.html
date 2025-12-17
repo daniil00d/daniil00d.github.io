@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C новым годом, джупсики!!!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gif-container {
+            margin: 30px 0;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gif-container:hover {
+            transform: scale(1.02);
+        }
+
+        .instruction {
+            font-size: 20px;
+            color: #d32f2f;
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #ff9800;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #95a5a6;
+            font-style: italic;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎄✨</h1>
+        <h1>С Новым Годом, джупсики!!!</h1>
+
+
+        <div class="gif-container" onclick="playMusic()" title="Кликни, чтобы включить музыку!">
+            <img src="./pudgy-penguin.gif" alt="Новогодний пингвин" />
+        </div>
+
+        <div class="footer">
+            Кликни на пингвина, чтобы почувствовать вайб Нового Года
+        </div>
+        <span>🐧</span>
+    </div>
+
+    <audio id="myAudio">
+        <source src="o_pogoda_tak_uzhasna.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио элемент.
+    </audio>
+
+    <script>
+        function playMusic() {
+            var audio = document.getElementById("myAudio");
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(function (error) {
+                    console.log("Воспроизведение не удалось: ", error);
+                    // Показываем сообщение об ошибке
+                    alert("Не удалось воспроизвести музыку. Проверьте, есть ли файл o_pogoda_tak_uzhasna.mp3 в папке с сайтом.");
+                });
+            }
+
+            // Меняем текст инструкции после клика
+            var instruction = document.querySelector('.instruction');
+            instruction.innerHTML = "🎶 Музыка играет! С наступающим! 🎶";
+            instruction.style.backgroundColor = "#d4edda";
+            instruction.style.color = "#155724";
+            instruction.style.border = "2px solid #28a745";
+        }
+
+        // Показываем инструкцию еще раз через 3 секунды, если пользователь не кликнул
+        setTimeout(function () {
+            var instruction = document.querySelector('.instruction');
+            if (instruction.innerHTML.includes("Кликните на пингвина")) {
+                instruction.style.animation = "pulse 1.5s infinite";
+
+                // Добавляем анимацию пульсации
+                var style = document.createElement('style');
+                style.innerHTML = `
+                    @keyframes pulse {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(1.05); }
+                        100% { transform: scale(1); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }, 3000);
+    </script>
+</body>
+
+</html>
