@@ -89,44 +89,36 @@
     </audio>
 
     <script>
+        // @ts-check
+        let isPlaying = false;
         function playMusic() {
             var audio = document.getElementById("myAudio");
+
+            if (isPlaying) {
+                var stopPromise = audio.pause()
+
+                if (stopPromise !== undefined) {
+                    stopPromise.catch(function (error) {
+                        console.log("Воспроизведение не удалось: ", error);
+                        // Показываем сообщение об ошибке
+                        alert("Не удалось воспроизвести музыку. Проверьте, есть ли файл o_pogoda_tak_uzhasna.mp3 в папке с сайтом.");
+                    });
+                }
+                isPlaying = false;
+                return
+            }
+
             var playPromise = audio.play();
 
             if (playPromise !== undefined) {
+                isPlaying = true;
                 playPromise.catch(function (error) {
                     console.log("Воспроизведение не удалось: ", error);
                     // Показываем сообщение об ошибке
                     alert("Не удалось воспроизвести музыку. Проверьте, есть ли файл o_pogoda_tak_uzhasna.mp3 в папке с сайтом.");
                 });
             }
-
-            // Меняем текст инструкции после клика
-            var instruction = document.querySelector('.instruction');
-            instruction.innerHTML = "🎶 Музыка играет! С наступающим! 🎶";
-            instruction.style.backgroundColor = "#d4edda";
-            instruction.style.color = "#155724";
-            instruction.style.border = "2px solid #28a745";
         }
-
-        // Показываем инструкцию еще раз через 3 секунды, если пользователь не кликнул
-        setTimeout(function () {
-            var instruction = document.querySelector('.instruction');
-            if (instruction.innerHTML.includes("Кликните на пингвина")) {
-                instruction.style.animation = "pulse 1.5s infinite";
-
-                // Добавляем анимацию пульсации
-                var style = document.createElement('style');
-                style.innerHTML = `
-                    @keyframes pulse {
-                        0% { transform: scale(1); }
-                        50% { transform: scale(1.05); }
-                        100% { transform: scale(1); }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-        }, 3000);
     </script>
 </body>
 
