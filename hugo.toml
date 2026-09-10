@@ -1,0 +1,85 @@
+baseURL = "https://daniil00d.github.io/"
+locale = "ru-ru"
+title = "daniil00d"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+enableGitInfo = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[pagination]
+  pagerSize = 10
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+[params]
+  env = "production"
+  description = "Личный блог Даниила"
+  author = "daniil00d"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowRssButtonInSectionTermList = true
+  ShowToc = true
+  TocOpen = false
+  disableSpecial1stPost = false
+  comments = false
+
+  [params.homeInfoParams]
+    Title = "Привет 👋"
+    Content = "Это мой блог. Здесь я пишу заметки и статьи."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/daniil00d"
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Статьи"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "archives"
+    name = "Архив"
+    url = "/archives/"
+    weight = 20
+  [[menu.main]]
+    identifier = "tags"
+    name = "Теги"
+    url = "/tags/"
+    weight = 30
+  [[menu.main]]
+    identifier = "search"
+    name = "Поиск"
+    url = "/search/"
+    weight = 40
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = "onedark"
+  [markup.goldmark.renderer]
+    unsafe = true
