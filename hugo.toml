@@ -1,4 +1,5 @@
 baseURL = "https://daniil00d.github.io/"
+defaultContentLanguage = "ru"
 locale = "ru-ru"
 title = "daniil00d"
 theme = "PaperMod"
@@ -34,7 +35,7 @@ buildExpired = false
 
   [params.homeInfoParams]
     Title = "Привет 👋"
-    Content = "Это мой блог. Здесь я пишу заметки и статьи."
+    Content = "Дневник о том, как я в одиночку и руками пишу маленький язык для работы с данными: придумать его, научиться разбирать и исполнять на реальных данных."
 
   [[params.socialIcons]]
     name = "github"
@@ -73,6 +74,11 @@ buildExpired = false
     name = "Поиск"
     url = "/search/"
     weight = 40
+  [[menu.main]]
+    identifier = "about"
+    name = "О проекте"
+    url = "/about/"
+    weight = 50
 
 [markup]
   [markup.highlight]
