@@ -1,0 +1,14 @@
+/* Task lists (roadmap / checklists) — drop the bullet, align the checkbox */
+.post-content ul li:has(> input[type="checkbox"]) {
+    list-style: none;
+    margin-inline-start: -1em;
+}
+.post-content ul li > input[type="checkbox"] {
+    margin-inline-end: 0.5em;
+}
+
+/* Series / note callout: a leading blockquote right after the title */
+.post-content > blockquote:first-child {
+    margin-top: 0;
+    border-inline-start-color: var(--primary);
+}

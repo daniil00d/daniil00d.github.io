@@ -20,14 +20,15 @@ git submodule update --init --recursive
 ## Новая статья
 
 ```powershell
-./scripts/new-post.ps1 "Заголовок статьи"
+./scripts/new-post.ps1 "Заголовок статьи" -Slug "english-slug"
 ```
 
-Скрипт сделает slug (транслит с русского) и создаст `content/posts/<slug>.md`.
-Либо вручную:
+Заголовок — на любом языке, **slug (имя файла и URL) — латиницей**. Скрипт создаст
+`content/posts/<slug>.md`. Если заголовок и так на латинице, `-Slug` можно не
+указывать. Либо вручную:
 
 ```bash
-hugo new content posts/moya-statya.md
+hugo new content posts/english-slug.md
 ```
 
 В front matter выставьте `draft = false`, когда статья готова.
@@ -55,8 +56,15 @@ Workflow `.github/workflows/hugo.yml` соберёт и задеплоит са�
 | Путь | Назначение |
 |------|-----------|
 | `content/posts/` | статьи в Markdown |
-| `content/search.md`, `content/archives.md` | страницы поиска и архива |
+| `content/search.md`, `content/archives.md`, `content/about.md` | страницы поиска, архива и «О проекте» |
 | `archetypes/posts.md` | шаблон новой статьи |
+| `assets/css/extended/custom.css` | локальные правки стилей темы |
 | `static/` | статика как есть (напр. `static/new_year/`) |
 | `hugo.toml` | конфигурация сайта |
 | `themes/PaperMod/` | тема (submodule) |
+
+## Цикл статей
+
+Посты одной серии связываются через `categories` во front matter (напр.
+`categories = ["Язык для данных"]`) и общий тег. Все посты серии — на
+`/tags/<тег>/`.

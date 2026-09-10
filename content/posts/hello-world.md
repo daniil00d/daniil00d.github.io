@@ -3,11 +3,13 @@ title = "Привет, мир"
 date = 2026-09-10T12:00:00+03:00
 draft = false
 tags = ["разное"]
-summary = "Первая запись в блоге и краткая инструкция, как писать статьи."
+summary = "Технический пробный пост и краткая инструкция, как писать статьи."
+aliases = ["/posts/privet-mir/"]
 +++
 
-Это первая статья в блоге, собранном на [Hugo](https://gohugo.io/) с темой
-[PaperMod](https://github.com/adityatelange/hugo-PaperMod).
+Блог собран на [Hugo](https://gohugo.io/) с темой
+[PaperMod](https://github.com/adityatelange/hugo-PaperMod). Этот пост — просто
+проверка, что всё работает, плюс шпаргалка для меня самого.
 
 ## Как добавить новую статью
 

@@ -1,9 +1,12 @@
 <#
 .SYNOPSIS
   Create a new blog post in content/posts/.
+.DESCRIPTION
+  The title can be in any language. The URL slug must be given explicitly in
+  Latin letters (-Slug) unless the title itself is already ASCII.
 .EXAMPLE
-  ./scripts/new-post.ps1 "Moya novaya statya"
-  ./scripts/new-post.ps1 -Title "Zagolovok" -Slug "my-post"
+  ./scripts/new-post.ps1 "Зачем я пишу свой язык" -Slug "why-a-data-language"
+  ./scripts/new-post.ps1 "Hello world"
 #>
 param(
   [Parameter(Position = 0, Mandatory = $true)]
@@ -15,29 +18,22 @@ $ErrorActionPreference = "Stop"
 $root = Split-Path $PSScriptRoot -Parent
 Set-Location $root
 
-# Russian -> Latin transliteration, indexed by (codepoint - 0x0430), covering а..я
-$tr = @(
-  'a','b','v','g','d','e','zh','z','i','y','k','l','m','n','o','p',
-  'r','s','t','u','f','h','ts','ch','sh','sch','','y','','e','yu','ya'
-)
-
 if (-not $Slug) {
-  $sb = [System.Text.StringBuilder]::new()
-  foreach ($ch in $Title.ToLower().ToCharArray()) {
-    $code = [int][char]$ch
-    if ($code -ge 0x0430 -and $code -le 0x044F) {
-      [void]$sb.Append($tr[$code - 0x0430])
-    }
-    elseif ($code -eq 0x0451) { [void]$sb.Append('e') }   # yo
-    elseif ("$ch" -match '[a-z0-9]') { [void]$sb.Append($ch) }
-    elseif ($ch -eq ' ' -or $ch -eq '-' -or $ch -eq '_') { [void]$sb.Append('-') }
+  if ($Title -match '^[\x20-\x7E]+$') {
+    $Slug = $Title.ToLower()
   }
-  $Slug = ($sb.ToString() -replace '-+', '-').Trim('-')
+  else {
+    throw "Non-ASCII title: pass an English slug explicitly, e.g. -Slug ""my-post""."
+  }
 }
 
-if (-not $Slug) { throw "Could not build a slug from title; pass -Slug explicitly." }
+$Slug = $Slug.ToLower() -replace '[^a-z0-9]+', '-'
+$Slug = $Slug.Trim('-')
+if (-not $Slug) { throw "Slug is empty after normalization; pass -Slug explicitly." }
 
 $rel = "posts/$Slug.md"
+if (Test-Path (Join-Path $root "content/$rel")) { throw "content/$rel already exists." }
+
 & hugo new content $rel
 if ($LASTEXITCODE -ne 0) { throw "hugo new content failed" }
 
